@@ -74,3 +74,20 @@ function handleInput(event) {
 
 // Listner at Input
 input.addEventListener('keyup', handleInput);
+
+
+// Get Random cats
+var btn = document.querySelector("#btn");
+var img = document.querySelector("#random");
+
+btn.addEventListener("click", function() {
+  var XHR = new XMLHttpRequest();
+  
+  XHR.onreadystatechange = function() {
+    if (XHR.readyState == 4 && XHR.status == 200) {
+      img.src = JSON.parse(XHR.responseText).file;  
+    }
+  }
+  XHR.open("GET", "https://api.thecatapi.com/v1/images/search?limit=1&size=full");
+  XHR.send();
+});

@@ -1,0 +1,141 @@
+
+/* Custom Style */
+*{
+  padding: 0;
+  margin: 0;
+}
+html {
+  font-size: 1rem;
+  font-family: sans-serif;
+}
+
+body {
+ background-color:   rgb(117, 125, 141); 
+ color: white;
+}
+
+/* *::before,
+*::after {
+  box-sizing: border-box;
+} */
+a {
+  text-decoration: none;
+  color: mediumseagreen;
+}
+a:hover {
+  text-decoration: underline;
+  color: rgb(86, 199, 161);
+}
+
+
+.full-width {
+  width: 100%;
+  object-fit: cover;
+}
+
+header {
+  border-bottom: 5px solid orange;
+  background-color: rgb(1, 1, 8);
+}
+.container{
+  width: 95%;
+  margin: auto;
+}
+.nav{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 25px;
+}
+h1 {
+  text-align: center;
+  font-size: 3rem;
+  color: rgb(62, 96, 251);
+  font-weight: 700;
+  padding: 1rem;
+}
+.nav h2{
+  font-size: 2rem;
+}
+.search-box{
+  position: relative;
+  width: 350px;
+}
+ input {
+  width: 350px;
+  /* position: relative; */
+  /* width: 100%; */
+  display: flex;
+  font-size: 1rem;
+  padding: 8px;
+  margin: auto;
+  margin-top: 2rem ;
+  text-align: center;
+  border-radius: 0.5rem;
+  outline: none;
+}
+.search-box i{
+  /* color: black; */
+  position: absolute;
+  top: 64%;
+  right: 4%;
+  transition: 1.5%;
+}
+.search-box i:hover{
+  color: orange;
+}
+/* .grid{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: flex-start;
+} */
+img{
+  width: 380px;
+  height: 200px;
+  /* display: flex; */
+  margin-top: 15px;
+  /* background-position: 50% 50%; */
+  background-size: cover;
+  border-radius: 2px;
+  border: 2px solid black;
+  /* max-width: 23vw; */
+}
+.image{
+  /* width: 100%; */
+  /* display: flex;
+  flex-wrap: wrap;
+  justify-content:center; */
+  /* justify-content: space-between; */
+  /* align-items: flex-start; */
+  display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    flex-direction: row;
+    /* max-height: 100vh; */
+}
+@media(max-width:768px){
+  .img{
+    width: 100%;
+  }
+  .nav{
+    justify-content: center;
+  }
+  .nav h2{
+    padding: 5px 0;
+  }
+}
+@media (max-width:480px){
+    .nav h2{
+      text-align: center;
+      font-size: 1.5rem;
+    }
+    .search-box{
+      width: 80%;
+      margin: auto;
+    }
+    .search-box input{
+      font-size: 7rem;
+    }
+}

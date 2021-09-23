@@ -1,36 +1,43 @@
-const input = document.querySelector('input')
-const grid = document.querySelector('grid')
+const url = 'https://api.unsplash.com/photos/random/?client_id=1YZfb7Vy3OXh6kaJJi3Lnmfbj2cALWOXFZwnT8nY8UA'
 
-input.addEventListener('keydown',function(event){
-    if  (event.key === "Enter")
-    loadImg();
-})
-function loadImg(){
-removeImages();
-const url = 'https://api.unsplash.com/photos/?query='+input.value+'&per_page=9&client_id=1YZfb7Vy3OXh6kaJJi3Lnmfbj2cALWOXFZwnT8nY8UA';
+const getSearchUrl = (query) => `https://api.unsplash.com/search/photos?query=${query}&client_id=1YZfb7Vy3OXh6kaJJi3Lnmfbj2cALWOXFZwnT8nY8UA`
 
-fetch(url)
+const root = document.querySelector(".images")
+const searchElm = document.querySelector("input")
 
-function removeImages(){
-    grid.innerHTML = "";
+function fetch(url,successHandler){
+  let xhr = new XMLHttpRequest();
+  xhr.open('GET',url);
+  xhr.onload = () => successHandler(JSON.parse(xhr.response));
+
+  xhr.onerror = function(){
+    console.error('somthing went wrong')
+  };
+  xhr.send();
 }
+function displayImages(images){
+     root.innerHTML = "";
+     images.forEach ((image => {
+      let li = document.createElement("li")
+      let img = document.createElement("img")
+      img.src = image.urls.thumb;
+      li.append(img);
+      root.append(li);
+
+    }));
+  }
+
+fetch(url, displayImages);
+
+function handleSearch(event){
+ if (event.keycode == 13 &&  searchElm.value){
+   fetch(getSearchUrl(searchElm.value),(searchResult)=>{
+     displayImages(searchResult.results)
+   })
+ }
 }
-// const url = `https://api.unsplash.com/photos/random/?client_id=1YZfb7Vy3OXh6kaJJi3Lnmfbj2cALWOXFZwnT8nY8UA`;
-// const getSearchUrl = (query) =>
-//   `// https://api.unsplash.com/photos?query=${query}&client_id=1YZfb7Vy3OXh6kaJJi3Lnmfbj2cALWOXFZwnT8nY8UA`;
-// const imageUl = document.querySelector('img');
-// const searchElm = document.querySelector('input');
 
-
-
-
-
-
-
-
-
-
-
+searchElm.addEventListener('keyup',handleSearch)
 
 
 
